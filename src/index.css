@@ -1,0 +1,137 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Indigo light theme, locked palette. All colors live here as HSL tokens.
+   Background #FAF9FF, surface #FFFFFF, text #1E1B4B, muted #55536E, accent #6D28D9. */
+
+@layer base {
+  :root {
+    --background: 250 100% 99%;
+    --foreground: 244 47% 20%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 244 47% 20%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 244 47% 20%;
+
+    /* The single accent */
+    --primary: 263 70% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 250 60% 97%;
+    --secondary-foreground: 244 47% 20%;
+
+    --muted: 250 60% 97%;
+    --muted-foreground: 244 14% 38%;
+
+    /* Neutral hover tint used by shadcn primitives */
+    --accent: 250 60% 96%;
+    --accent-foreground: 244 47% 20%;
+
+    --destructive: 0 72% 42%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 70% 28%;
+    --success-foreground: 0 0% 100%;
+
+    --border: 250 30% 90%;
+    --input: 244 20% 68%;
+    --ring: 263 70% 50%;
+
+    --radius: 0.75rem;
+
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+    --sidebar-background: 250 100% 99%;
+    --sidebar-foreground: 244 47% 20%;
+    --sidebar-primary: 263 70% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 250 60% 96%;
+    --sidebar-accent-foreground: 244 47% 20%;
+    --sidebar-border: 250 30% 90%;
+    --sidebar-ring: 263 70% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  ::selection {
+    background: hsl(var(--primary) / 0.16);
+    color: hsl(var(--foreground));
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+
+  a {
+    text-underline-offset: 3px;
+  }
+
+  input,
+  textarea {
+    caret-color: hsl(var(--primary));
+  }
+
+  * {
+    scrollbar-color: hsl(var(--input)) hsl(var(--background));
+  }
+}
+
+@layer components {
+  .tech-card {
+    @apply bg-card border border-border rounded-xl p-6;
+  }
+
+  .tech-button {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-6 py-3 font-medium;
+    @apply bg-primary text-primary-foreground transition-colors duration-200 hover:bg-primary/90;
+  }
+
+  .tech-button-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-6 py-3 font-medium;
+    @apply bg-card text-foreground border border-input transition-colors duration-200 hover:bg-secondary;
+  }
+
+  .tech-chip {
+    @apply inline-flex items-center rounded-md border border-border bg-secondary px-2.5 py-1 text-xs font-medium text-foreground;
+  }
+
+  .text-link {
+    @apply text-primary underline decoration-primary/40 hover:decoration-primary;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
